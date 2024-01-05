@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Constants from "../common/KeyIds";
 
 const Signup = () => {
   const [role, selectrole] = useState();
@@ -23,7 +24,7 @@ const Signup = () => {
       },
       body: JSON.stringify(params),
     };
-    const response = fetch("http://localhost:8090/auth/saveUser", options)
+    const response = fetch(Constants.BASE_URL + "auth/saveUser", options)
       .then((response) => response.json())
       .then((data) => afterHit(data))
       .catch((error) => console.error(error));

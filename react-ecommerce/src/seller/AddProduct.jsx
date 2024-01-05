@@ -4,6 +4,7 @@ import "./AddProduct.css";
 import AuthContext from "../common/AuthContext";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
+import Constants from "../common/KeyIds";
 const AddProduct = () => {
   const [errormsg, setErrorMsg] = useState();
   const auth = useContext(AuthContext);
@@ -49,7 +50,7 @@ const AddProduct = () => {
       },
       body: JSON.stringify(params),
     };
-    const response = fetch("http://localhost:8090/seller/saveProduct", options)
+    const response = fetch(Constants.BASE_URL + "seller/saveProduct", options)
       .then((response) => response.json())
       .then((data) => afterHit(data))
       .catch((error) => console.error(error));

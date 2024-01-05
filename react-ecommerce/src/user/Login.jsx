@@ -3,6 +3,7 @@ import AuthContext from "../common/AuthContext";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
+import Constants from "../common/KeyIds";
 const Login = () => {
   const auth = useContext(AuthContext);
   const [errormsg, setErrorMsg] = useState();
@@ -23,7 +24,7 @@ const Login = () => {
       },
       body: JSON.stringify(params),
     };
-    fetch("http://localhost:8090/auth/login", options)
+    fetch(Constants.BASE_URL + "auth/login", options)
       .then((response) => response.json())
       .then((data) => afterHit(data))
       .catch((error) => console.error(error));

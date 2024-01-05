@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Search.css";
 import MyProducts from "../seller/MyProducts";
+import Constants from "../common/KeyIds";
 
 const Search = () => {
   const [searchCriteria, setSearchCriteria] = useState({
@@ -37,7 +38,8 @@ const Search = () => {
       },
       body: JSON.stringify(params),
     };
-    fetch("http://localhost:8090/myApp/searchProduct", options)
+    console.log(Constants.BASE_URL + "myApp/searchProduct");
+    fetch(Constants.BASE_URL + "myApp/searchProduct", options)
       .then((response) => response.json())
       .then((data) => afterHit(data))
       .catch((error) => console.error(error));
